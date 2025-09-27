@@ -43,23 +43,32 @@
 
     <form id="funForm" class="mt-6 grid gap-4">
       <label class="block">
-        <span class="text-xl font-bold text-gray-700">নাম</span>
-        <select id="nameSelect" required class="mt-2 block w-full rounded-lg border border-gray-200 p-3 text-base">
-          <option value="">— একটি নাম বেছে নাও —</option>
-          <option value="নাঈমুর রহমান">নাঈমুর রহমান</option>
-          <option value="রাইয়ান সিদ্দিকী">রাইয়ান সিদ্দিকী</option>
-          <option value="ওসমান মাসরুর">ওসমান মাসরুর</option>
-          <option value="আহমাদুল্লাহ">আহমাদুল্লাহ</option>
-          <option value="কাজী তৈয়বুর রহমান">কাজী তৈয়বুর রহমান</option>
-          <option value="আজিজুল হাকিম">আজিজুল হাকিম</option>
-          <option value="তাওহীদুল ইসলাম">তাওহীদুল ইসলাম</option>
-          <option value="মুহাম্মাদ ইয়াসিন">মুহাম্মাদ ইয়াসিন</option>
-          <option value="আইউব আলী">আইউব আলী</option>
-          <option value="রিয়াজুল হাসান মারুফ">রিয়াজুল হাসান মারুফ</option>
-          <option value="শাব্বির আহমাদ">শাব্বির আহমাদ</option>
-          <option value="ইয়াকুব বিন ইসহাক">ইয়াকুব বিন ইসহাক</option>
-        </select>
-      </label>
+  <span class="text-xl font-bold text-gray-700">নাম</span>
+  <select id="nameSelect" required class="mt-2 block w-full rounded-lg border border-gray-200 p-3 text-base">
+    <option value="">— একটি নাম বেছে নাও —</option>
+    <option value="নাঈমুর রহমান">নাঈমুর রহমান</option>
+    <option value="রাইয়ান সিদ্দিকী">রাইয়ান সিদ্দিকী</option>
+    <option value="ওসমান মাসরুর">ওসমান মাসরুর</option>
+    <option value="আহমাদুল্লাহ">আহমাদুল্লাহ</option>
+    <option value="কাজী তৈয়বুর রহমান">কাজী তৈয়বুর রহমান</option>
+    <option value="আজিজুল হাকিম">আজিজুল হাকিম</option>
+    <option value="তাওহীদুল ইসলাম">তাওহীদুল ইসলাম</option>
+    <option value="মুহাম্মাদ ইয়াসিন">মুহাম্মাদ ইয়াসিন</option>
+    <option value="আইউব আলী">আইউব আলী</option>
+    <option value="রিয়াজুল হাসান মারুফ">রিয়াজুল হাসান মারুফ</option>
+    <option value="শাব্বির আহমাদ">শাব্বির আহমাদ</option>
+    <option value="ইয়াকুব বিন ইসহাক">ইয়াকুব বিন ইসহাক</option>
+    <option value="Other">অন্য কোন নাম</option>
+  </select>
+</label>
+
+<!-- Hidden custom input -->
+<input 
+  type="text" 
+  id="customName" 
+  placeholder="নিজের নাম লিখুন" 
+  class="mt-2 hidden block w-full rounded-lg border border-gray-200 p-3 text-base"
+/>
 
       <label class="block">
         <span class="text-xl font-bold text-gray-700">মাসিক ইনকাম (সংখ্যায়)</span>

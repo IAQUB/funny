@@ -1,5 +1,6 @@
 const form = document.getElementById('funForm');
 const nameSelect = document.getElementById('nameSelect');
+const customName = document.getElementById('customName');
 const incomeInput = document.getElementById('incomeInput');
 const result = document.getElementById('result');
 const resetBtn = document.getElementById('resetBtn');
@@ -30,18 +31,34 @@ const highIncomeMessages = [
   "তুমি এখন আর শুধু ক্রাশ না, কনেরও হিরো হতে পারো! ❤️"
 ];
 
+// বাংলা সংখ্যা কনভার্ট
 function toBengaliNumber(n){
   const map = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
   return String(n).split('').map(ch => map[ch] ?? ch).join('');
 }
 
+// Other অপশন সিলেক্ট করলে কাস্টম ইনপুট শো করবে
+nameSelect.addEventListener('change', () => {
+  if (nameSelect.value === 'Other') {
+    customName.classList.remove('hidden');
+  } else {
+    customName.classList.add('hidden');
+    customName.value = '';
+  }
+});
+
+// ফর্ম সাবমিশন
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = nameSelect.value.trim();
+
+  const name = (nameSelect.value === 'Other')
+    ? customName.value.trim()
+    : nameSelect.value.trim();
+
   let incomeRaw = incomeInput.value.trim();
 
   if(!name){
-    showMessage('দয়া করে নাম সিলেক্ট করো।', 'warn');
+    showMessage('দয়া করে নাম সিলেক্ট করো বা লিখো।', 'warn');
     return;
   }
   if(incomeRaw === ''){
@@ -70,6 +87,8 @@ form.addEventListener('submit', (e) => {
 
 resetBtn.addEventListener('click', () => {
   nameSelect.value = '';
+  customName.value = '';
+  customName.classList.add('hidden');
   incomeInput.value = '';
   result.innerHTML = `<div><p class="text-gray-500">"সতর্কীকরণঃ এই ওয়েবসাইট ডাক্তার নয়, কিন্তু বিয়ের প্রেসক্রিপশন দেয়! 💸❤️"</p></div>`;
 });
@@ -81,6 +100,7 @@ tryAgainBtn.addEventListener('click', () => {
   result.innerHTML = `<div><p class="text-gray-500">"নোটঃ এই ওয়েবসাইট শুধু মজা করার জন্য—বাস্তবে ইনকাম বাড়ানোই আসল কাজ! 😂"</p></div>`;
 });
 
+// মেসেজ দেখানোর ফাংশন
 function showMessage(message, type){
   let bg='bg-white';
   let emoji='';
