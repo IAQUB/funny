@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>বিয়ের সময় নির্ণয়</title>
+
+  <!-- Google Font: Hind Siliguri (good for Bengali) -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN (for quick single-file demo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config: set Bengali font as default
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['\"Hind Siliguri\"', 'ui-sans-serif', 'system-ui'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* small extra styling */
+    body { background: linear-gradient(180deg,#fff7ed 0%, #fffef9 100%); }
+    .bangla-number { font-variant-numeric: lining-nums; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-[url(https://t3.ftcdn.net/jpg/07/64/61/74/360_F_764617449_BdInheQjvZEnTBX7nV8zO3yyCcPi4Mh4.jpg)] bg-cover bg-center">
+  <main class="w-full max-w-xl mx-auto bg-white/80 backdrop-blur rounded-2xl shadow-2xl p-6 md:p-10">
+    <header class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky96KddpFWnlFn44glTUWQkq3Fbg6H6ooZQ&s" alt="">
+      </div>
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold">বিয়ের পারফেক্ট সময়<span class="text-sm font-medium text-gray-600 pl-3">(মজার টেস্ট)</span></h1>
+        <p class="text-sm text-gray-600 mt-1">নাম সিলেক্ট করো, ইনকাম দাও — আমরা বলব এখন বিয়ের টাইম নাকি না</p>
+      </div>
+    </header>
+
+    <form id="funForm" class="mt-6 grid gap-4">
+      <label class="block">
+        <span class="text-xl font-bold text-gray-700">নাম</span>
+        <select id="nameSelect" required class="mt-2 block w-full rounded-lg border border-gray-200 p-3 text-base">
+          <option value="">— একটি নাম বেছে নাও —</option>
+          <option value="নাঈমুর রহমান">নাঈমুর রহমান</option>
+          <option value="রাইয়ান সিদ্দিকী">রাইয়ান সিদ্দিকী</option>
+          <option value="ওসমান মাসরুর">ওসমান মাসরুর</option>
+          <option value="আহমাদুল্লাহ">আহমাদুল্লাহ</option>
+          <option value="কাজী তৈয়বুর রহমান">কাজী তৈয়বুর রহমান</option>
+          <option value="আজিজুল হাকিম">আজিজুল হাকিম</option>
+          <option value="তাওহীদুল ইসলাম">তাওহীদুল ইসলাম</option>
+          <option value="আইউব আলী">আইউব আলী</option>
+          <option value="রিয়াজুল হাসান মারুফ">রিয়াজুল হাসান মারুফ</option>
+          <option value="শাব্বির আহমাদ">শাব্বির আহমাদ</option>
+          <option value="ইয়াকুব বিন ইসহাক">ইয়াকুব বিন ইসহাক</option>
+        </select>
+      </label>
+
+      <label class="block">
+        <span class="text-xl font-bold text-gray-700">মাসিক ইনকাম (সংখ্যায়)</span>
+        <input id="incomeInput" type="number" min="0" placeholder="جنيه: 5000" class="mt-2 block w-full rounded-lg border border-gray-200 p-3 text-base" required />
+        <p class="text-xs text-gray-500 mt-1">সংখ্যা বাংলা বা ইংরেজি দুটোই কাজ করবে।</p>
+      </label>
+
+      <div class="flex gap-3">
+        <button type="submit" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#7BE495] to-[#7072dd] font-semibold shadow hover:scale-[1.01] active:scale-95 transition">যাচাই করো</button>
+        <button type="button" id="resetBtn" class="py-3 px-4 rounded-xl border border-gray-200">রিফ্রেশ</button>
+      </div>
+    
+    </form>
+
+    <section id="result" class="mt-6 p-4 rounded-xl border border-dashed border-gray-200 min-h-[80px] flex items-center justify-center text-center">
+      <div>
+        <p class="text-gray-500">"সতর্কীকরণঃ এই ওয়েবসাইট ডাক্তার নয়, কিন্তু বিয়ের প্রেসক্রিপশন দেয়! 💸❤️"</p>
+      </div>
+    </section>
+
+
+       <!-- আবার চেষ্টা করুন বক্স -->
+<div id="tryAgainBox" class="mt-4 hidden text-center">
+  <button id="tryAgainBtn"
+    class="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition">
+    আবার চেষ্টা করুন
+  </button>
+</div>
+
+    <footer class="mt-6 text-xs text-gray-500 text-center">এই সাইটটি সম্পূর্ণ ফানি—ফলে সিদ্ধান্ত নেওয়ার আগে নিজের ইনকাম ও পরিকল্পনা বিবেচনা করো 😄</footer>
+
+ 
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
