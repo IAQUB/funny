@@ -71,7 +71,7 @@ form.addEventListener('submit', (e) => {
 resetBtn.addEventListener('click', () => {
   nameSelect.value = '';
   incomeInput.value = '';
-  result.innerHTML = `<div><p class="text-gray-500"></p></div>`;
+  result.innerHTML = `<div><p class="text-gray-500">"সতর্কীকরণঃ এই ওয়েবসাইট ডাক্তার নয়, কিন্তু বিয়ের প্রেসক্রিপশন দেয়! 💸❤️"</p></div>`;
 });
 
 tryAgainBtn.addEventListener('click', () => {
